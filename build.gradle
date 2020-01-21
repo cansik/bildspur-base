@@ -21,10 +21,11 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     // json
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
 }
 
