@@ -36,6 +36,19 @@ class DataModel<T>(@Expose @Volatile private var dataValue: T) {
         onChanged.invokeLatest(dataValue)
     }
 
+    fun bindTo(model : DataModel<T>) {
+        this.onChanged += {
+            publishActive = false
+            model.value = value
+            publishActive = true
+        }
+    }
+
+    fun bindBidirectional(model : DataModel<T>) {
+        this.bindTo(model)
+        model.bindTo(this)
+    }
+
     override fun toString(): String {
         return "DataModel ($value)"
     }
