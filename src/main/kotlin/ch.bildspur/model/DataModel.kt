@@ -2,12 +2,16 @@ package ch.bildspur.model
 
 import ch.bildspur.event.Event
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 
 /**
  * Created by cansik on 09.06.17.
  */
-class DataModel<T>(@Expose @Volatile private var dataValue: T) {
+class DataModel<T>(@Expose
+                   @Volatile
+                   @SerializedName("value", alternate = ["dataValue"])
+                   private var dataValue: T) {
     val onChanged = Event<T>()
     private var publishActive = true
 
@@ -36,7 +40,7 @@ class DataModel<T>(@Expose @Volatile private var dataValue: T) {
         onChanged.invokeLatest(dataValue)
     }
 
-    fun bindTo(model : DataModel<T>) {
+    fun bindTo(model: DataModel<T>) {
         this.onChanged += {
             publishActive = false
             model.value = value
@@ -44,7 +48,7 @@ class DataModel<T>(@Expose @Volatile private var dataValue: T) {
         }
     }
 
-    fun bindBidirectional(model : DataModel<T>) {
+    fun bindBidirectional(model: DataModel<T>) {
         this.bindTo(model)
         model.bindTo(this)
     }

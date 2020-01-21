@@ -1,6 +1,7 @@
 package ch.bildspur.test
 
 import ch.bildspur.configuration.ConfigurationController
+import ch.bildspur.model.DataModel
 import com.google.gson.annotations.Expose
 import org.junit.Test
 import java.nio.file.Files
@@ -14,6 +15,9 @@ class ConfigurationTest {
 
         @Expose
         var age = 15
+
+        @Expose
+        var humidity = DataModel(88.4)
     }
 
     @Test
