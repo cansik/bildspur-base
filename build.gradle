@@ -68,7 +68,7 @@ publishing {
                 artifact javadocJar
                 pom {
                     name = "bildspur Base"
-                    description = "Base library for bildspur projects."
+                    description = "Base library for creative projects."
                     url = "https://github.com/cansik/bildspur-base"
                 }
             }
