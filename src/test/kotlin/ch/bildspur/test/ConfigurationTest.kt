@@ -1,3 +1,5 @@
+package ch.bildspur.test
+
 import ch.bildspur.configuration.ConfigurationController
 import com.google.gson.annotations.Expose
 import org.junit.Test
