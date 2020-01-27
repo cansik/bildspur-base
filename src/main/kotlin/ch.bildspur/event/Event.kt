@@ -22,4 +22,7 @@ class Event<T> {
     fun clear() {
         handlers.clear()
     }
+
+    val handlerSize : Int
+        get() = handlers.size
 }
