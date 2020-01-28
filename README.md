@@ -41,7 +41,41 @@ buffer.forEach {
 ```
 
 ### Configuration
+To load and store configurations, there is a `ConfigurationController` which helps to serialize and deserialize complex objects with JSON. The configuration will be stored in the user home directory, in an app specific folder.
 
+#### Configuration
+A basic configuration is a class with fields. Each field with the annotation `Expose` will be serialized into JSON.
+
+```kotlin
+class AppConfig {
+    @Expose
+    var name = "Hello World"
+
+    @Expose
+    var age = 15
+
+    @Expose
+    var humidity = DataModel(88.4)
+}
+```
+
+#### Controller
+The controller handles loading and storing of the configuration class. It requiers following arguments:
+
+- App Name
+- Publisher Name
+- App URI
+
+```kotlin
+val configController = ConfigurationController("Test", "bsp", "test")
+
+// save
+val config = AppConfig()
+configController.saveAppConfig(config)
+
+// load
+val config = configController.loadAppConfig<AppConfig>()
+```
 
 ### Event
 
