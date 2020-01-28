@@ -1,9 +1,7 @@
-# bildspur Base Library [![Build Status](https://travis-ci.org/cansik/bildspur-base.svg?branch=master)](https://travis-ci.org/cansik/bildspur-base)
-A library with basic components for creative applications in kotlin.
+# bildspur-base [![Build Status](https://travis-ci.org/cansik/bildspur-base.svg?branch=master)](https://travis-ci.org/cansik/bildspur-base)
+A library with basic components for creative applications in kotlin. The idea is to combine all the necessary and usefull utils into one framework.
 
-Math part is adapted from Romain Guy.
-
-### Install
+## Installation
 
 ```groovy
 repositories {
@@ -14,3 +12,49 @@ dependencies {
     implementation "com.github.cansik:bildspur-base:0.1.0"
 }
 ```
+
+## Examples
+Here you find examples on how to use the different utilities. It is meant to give you an overview and is not a complete registry.
+
+### Collection
+#### Batching Sequence
+Split a sequence of elements into different batches.
+
+```kotlin
+val numbers = sequenceOf(3, 5, 2, 6, 9, 3, 4, 6)
+val parts = numbers.batch(2)
+
+// parts = [[3, 5] [2, 6], [9, 3] [4, 6]]
+```
+
+#### Ring Buffer
+A simple generic ringbuffer implementation which also works with iteration.
+
+```kotlin
+val buffer = RingBuffer<Float>(10)
+buffer.add(20f)
+buffer.add(10f)
+
+buffer.forEach { 
+    println(it)
+}
+```
+
+### Configuration
+
+
+### Event
+
+### Math
+
+### Model
+
+### Timer
+
+### Util
+
+
+## About
+
+- Implementaion by Florian (bildspur)
+- `math` package is adapted from Romain Guy.

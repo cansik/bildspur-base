@@ -1,4 +1,4 @@
-package ch.bildspur.util
+package ch.bildspur.collection
 
 import ch.fhnw.exakt.util.BatchingSequence
 import java.util.ArrayList
