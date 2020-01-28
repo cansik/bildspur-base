@@ -78,6 +78,30 @@ val config = configController.loadAppConfig<AppConfig>()
 ```
 
 ### Event
+An event is a simplified observable pattern implementation. It is possible to register to an event through the `+=` operator.
+
+This example shows how to create an event.
+
+```kotlin
+class Person {
+    var age = 10
+    
+    val onBirthday = Event<Int>()
+    
+    fun aging() {
+        onBirthday(age++)
+    }
+}
+```
+
+The following example shows how to sign to an event and be notified.
+
+```kotlin
+val p = Person()
+p.onBirthday += {
+    println("He is now: $it")
+}
+```
 
 ### Math
 
