@@ -12,7 +12,10 @@ class DataModel<T>(@Expose
                    @Volatile
                    @SerializedName("value", alternate = ["dataValue"])
                    private var dataValue: T) {
+    @Transient
     val onChanged = Event<T>()
+
+    @Transient
     private var publishActive = true
 
     var value: T

@@ -116,3 +116,4 @@ p.onBirthday += {
 
 - Implementaion by Florian (bildspur)
 - `math` package is adapted from Romain Guy.
+- `color` package is adapted from [AJ Alt](https://github.com/ajalt/colormath)
