@@ -26,7 +26,7 @@ const val INV_PI      = 1.0f / PI
 const val INV_TWO_PI  = INV_PI * 0.5f
 const val INV_FOUR_PI = INV_PI * 0.25f
 
-inline fun clamp(x: Float, min: Float, max: Float)= if (x < min) min else (if (x > max) max else x)
+inline fun clamp(x: Float, min: Float, max: Float) = if (x < min) min else (if (x > max) max else x)
 
 inline fun saturate(x: Float) = clamp(x, 0.0f, 1.0f)
 
