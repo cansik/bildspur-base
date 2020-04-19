@@ -1,5 +1,6 @@
 package ch.bildspur.test
 
+import ch.bildspur.color.RGB
 import ch.bildspur.configuration.ConfigurationController
 import ch.bildspur.model.DataModel
 import com.google.gson.annotations.Expose
@@ -18,6 +19,9 @@ class ConfigurationTest {
 
         @Expose
         var humidity = DataModel(88.4)
+
+        @Expose
+        var color = DataModel(RGB(0.2f, 0.3f, .5f))
     }
 
     @Test
