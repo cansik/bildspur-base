@@ -1,6 +1,7 @@
 package ch.bildspur.test
 
 import ch.bildspur.configuration.ConfigurationController
+import ch.bildspur.model.DataModeList
 import ch.bildspur.model.DataModel
 import com.google.gson.annotations.Expose
 import org.junit.Test
@@ -49,5 +50,20 @@ class DataModelTest {
         second.value = 25
 
         assert(first == second)
+    }
+
+    @Test
+    fun testDataModelList() {
+        val list = DataModeList(mutableListOf(2, 3, 5, 2, 3))
+        list.onChanged += {
+            println("list has changed!")
+        }
+
+        list.add(20)
+        list.remove(0)
+        list.remove(2)
+
+
+        println(list)
     }
 }

@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by cansik on 09.06.17.
  */
-class DataModel<T>(@Expose
+open class DataModel<T>(@Expose
                    @Volatile
                    @SerializedName("value", alternate = ["dataValue"])
                    private var dataValue: T) {
