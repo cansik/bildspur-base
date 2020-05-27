@@ -1,11 +1,8 @@
 package ch.bildspur.test
 
-import ch.bildspur.configuration.ConfigurationController
-import ch.bildspur.model.DataModeList
+import ch.bildspur.model.ListDataModel
 import ch.bildspur.model.DataModel
-import com.google.gson.annotations.Expose
 import org.junit.Test
-import java.nio.file.Files
 
 class DataModelTest {
 
@@ -53,8 +50,8 @@ class DataModelTest {
     }
 
     @Test
-    fun testDataModelList() {
-        val list = DataModeList(mutableListOf(2, 3, 5, 2, 3))
+    fun testListDataModel() {
+        val list = ListDataModel(mutableListOf(2, 3, 5, 2, 3))
         list.onChanged += {
             println("list has changed!")
         }

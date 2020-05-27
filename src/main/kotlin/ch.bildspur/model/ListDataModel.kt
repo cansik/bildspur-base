@@ -1,7 +1,7 @@
 package ch.bildspur.model
 
 
-open class DataModeList<T>(items : MutableList<T> = mutableListOf(), override val size: Int = items.size) : DataModel<MutableList<T>>(items), MutableCollection<T> {
+open class ListDataModel<T>(items : MutableList<T> = mutableListOf(), override val size: Int = items.size) : DataModel<MutableList<T>>(items), MutableCollection<T> {
 
     override fun contains(element: T): Boolean {
         return value.contains(element)
@@ -70,6 +70,6 @@ open class DataModeList<T>(items : MutableList<T> = mutableListOf(), override va
     }
 
     override fun toString(): String {
-        return "DataModelList (${value.size})"
+        return "ListDataModel (${value.size})"
     }
 }
