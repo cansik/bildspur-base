@@ -26,6 +26,12 @@ class ConfigurationTest {
 
         @Expose
         val list = ListDataModel(mutableListOf(2, 3))
+
+        @Expose
+        val richList = ListDataModel(mutableListOf(
+                DataModel("Max"),
+                DataModel("Muster")
+        ))
     }
 
     @Test

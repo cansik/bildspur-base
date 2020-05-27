@@ -12,6 +12,8 @@ import java.lang.reflect.Type
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import javax.xml.crypto.Data
+import kotlin.reflect.typeOf
 
 
 /**
@@ -70,9 +72,19 @@ class ConfigurationController(appName: String, publisherName: String, appUri: St
     }
 
     private inner class ListDataModelInstanceCreator : InstanceCreator<ListDataModel<*>> {
+        @ExperimentalStdlibApi
         override fun createInstance(type: Type): ListDataModel<*> {
             val typeParameters = (type as ParameterizedType).actualTypeArguments
             val defaultValue = typeParameters[0]
+
+            // check if generic and is data model
+            if(defaultValue is ParameterizedType && defaultValue.rawType == DataModel::class.java) {
+                val dataModelDefaultValue = defaultValue.actualTypeArguments[0]
+                val dm = DataModel(dataModelDefaultValue as Class<*>)
+                val list = ListDataModel(mutableListOf(dm))
+                list.clear()
+                return list
+            }
 
             val list = ListDataModel(mutableListOf(defaultValue as Class<*>))
             list.clear()
