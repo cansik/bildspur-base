@@ -3,6 +3,7 @@ package ch.bildspur.test
 import ch.bildspur.color.RGB
 import ch.bildspur.configuration.ConfigurationController
 import ch.bildspur.model.DataModel
+import ch.bildspur.model.ListDataModel
 import com.google.gson.annotations.Expose
 import org.junit.Test
 import java.nio.file.Files
@@ -22,6 +23,9 @@ class ConfigurationTest {
 
         @Expose
         var color = DataModel(RGB(0.2f, 0.3f, .5f))
+
+        @Expose
+        val list = ListDataModel(mutableListOf(2, 3))
     }
 
     @Test

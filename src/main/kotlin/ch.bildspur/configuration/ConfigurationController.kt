@@ -1,6 +1,7 @@
 package ch.bildspur.configuration
 
 import ch.bildspur.model.DataModel
+import ch.bildspur.model.ListDataModel
 import ch.bildspur.util.getValue
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
@@ -25,6 +26,7 @@ class ConfigurationController(appName: String, publisherName: String, appUri: St
             .setPrettyPrinting()
             .excludeFieldsWithoutExposeAnnotation()
             .registerTypeAdapter(DataModel::class.java, DataModelInstanceCreator())
+            .registerTypeAdapter(ListDataModel::class.java, ListDataModelInstanceCreator())
             .registerTypeAdapterFactory(PostProcessingEnabler())
             .create()
 
@@ -64,6 +66,17 @@ class ConfigurationController(appName: String, publisherName: String, appUri: St
             val typeParameters = (type as ParameterizedType).actualTypeArguments
             val defaultValue = typeParameters[0]
             return DataModel(defaultValue as Class<*>)
+        }
+    }
+
+    private inner class ListDataModelInstanceCreator : InstanceCreator<ListDataModel<*>> {
+        override fun createInstance(type: Type): ListDataModel<*> {
+            val typeParameters = (type as ParameterizedType).actualTypeArguments
+            val defaultValue = typeParameters[0]
+
+            val list = ListDataModel(mutableListOf(defaultValue as Class<*>))
+            list.clear()
+            return list
         }
     }
 }
