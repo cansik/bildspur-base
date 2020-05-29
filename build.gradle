@@ -25,8 +25,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     // json
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
+    compile 'com.google.code.gson:gson:2.8.6'
+    compile 'com.github.salomonbrys.kotson:kotson:2.5.0'
 }
 
 configurations {
