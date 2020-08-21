@@ -1,8 +1,17 @@
 package ch.bildspur.timer
 
-class ElapsedTimer(var duration : Long = 0) {
+class ElapsedTimer(var duration : Long = 0, fireOnStart : Boolean = false) {
     var lastTimestamp = millis()
         private set
+
+    init {
+        if(fireOnStart)
+            fire()
+    }
+
+    fun fire() {
+        lastTimestamp = 0
+    }
 
     fun elapsed() : Boolean {
         val m = millis()
