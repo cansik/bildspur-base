@@ -19,12 +19,12 @@ import kotlin.reflect.typeOf
 /**
  * Created by cansik on 11.07.17.
  */
-class ConfigurationController(appName: String, publisherName: String, appUri: String) {
+class ConfigurationController(appName: String, publisherName: String, appUri: String, gsonBuilder: GsonBuilder = GsonBuilder()) {
     val configurationFileName = "$appName.json"
     val configurationPath: Path = Paths.get(System.getProperty("user.home"), ".$publisherName", appUri)
     val configurationFile: Path = Paths.get(configurationPath.toString(), configurationFileName)
 
-    val gson: Gson = GsonBuilder()
+    val gson: Gson = gsonBuilder
             .setPrettyPrinting()
             .excludeFieldsWithoutExposeAnnotation()
             .registerTypeAdapter(DataModel::class.java, DataModelInstanceCreator())
