@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName
  * Created by cansik on 09.06.17.
  */
 open class DataModel<T>(@Expose
-                   @Volatile
-                   @SerializedName("value", alternate = ["dataValue"])
-                   private var dataValue: T) {
+                        @Volatile
+                        @SerializedName("value", alternate = ["dataValue"])
+                        private var dataValue: T) {
     @Transient
     val onChanged = Event<T>()
 
@@ -74,6 +74,4 @@ open class DataModel<T>(@Expose
     override fun hashCode(): Int {
         return dataValue?.hashCode() ?: 0
     }
-
-
 }

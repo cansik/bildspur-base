@@ -1,9 +1,9 @@
 package ch.bildspur.model
 
 
-open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataModel<MutableList<T>>(items), MutableCollection<T> {
+open class ListDataModel<T>(items: MutableList<T> = mutableListOf()) : DataModel<MutableList<T>>(items), MutableCollection<T> {
 
-    override val size : Int
+    override val size: Int
         get() = value.size
 
     override fun contains(element: T): Boolean {
@@ -21,7 +21,7 @@ open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataMode
     override fun add(element: T): Boolean {
         val returnValue = value.add(element)
 
-        if(returnValue)
+        if (returnValue)
             this.fire()
 
         return returnValue
@@ -30,7 +30,7 @@ open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataMode
     override fun addAll(elements: Collection<T>): Boolean {
         val returnValue = value.addAll(elements)
 
-        if(returnValue)
+        if (returnValue)
             this.fire()
 
         return returnValue
@@ -48,7 +48,7 @@ open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataMode
     override fun remove(element: T): Boolean {
         val returnValue = value.remove(element)
 
-        if(returnValue)
+        if (returnValue)
             this.fire()
 
         return returnValue
@@ -57,7 +57,7 @@ open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataMode
     override fun removeAll(elements: Collection<T>): Boolean {
         val returnValue = value.removeAll(elements)
 
-        if(returnValue)
+        if (returnValue)
             this.fire()
 
         return returnValue
@@ -66,7 +66,7 @@ open class ListDataModel<T>(items : MutableList<T> = mutableListOf()) : DataMode
     override fun retainAll(elements: Collection<T>): Boolean {
         val returnValue = value.retainAll(elements)
 
-        if(returnValue)
+        if (returnValue)
             this.fire()
 
         return returnValue

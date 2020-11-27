@@ -15,20 +15,20 @@ fun Float.limit(min: Float, max: Float): Float {
     return Math.max(Math.min(max, this), min)
 }
 
-fun Float.map(start1 : Float, stop1 : Float, start2 : Float, stop2: Float) : Float {
+fun Float.map(start1: Float, stop1: Float, start2: Float, stop2: Float): Float {
     return start2 + (stop2 - start2) * ((this - start1) / (stop1 - start1))
 }
 
-fun Long.formatSeconds() : String {
+fun Long.formatSeconds(): String {
     return (this / 1000.0).format(2)
 }
 
 fun Int.map(start1: Int, stop1: Int, start2: Int, stop2: Int): Int {
     return this.toDouble().map(
-        start1.toDouble(),
-        stop1.toDouble(),
-        start2.toDouble(),
-        stop2.toDouble()
+            start1.toDouble(),
+            stop1.toDouble(),
+            start2.toDouble(),
+            stop2.toDouble()
     ).roundToInt()
 }
 
