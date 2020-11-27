@@ -5,14 +5,14 @@ plugins {
 }
 
 group 'ch.bildspur'
-version '0.2.4'
+version '0.2.5'
 
 def String name = 'bildspur-base'
 sourceCompatibility = 1.8
 
 wrapper {
-    gradleVersion = '5.6.4'
-    distributionUrl = 'https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip'
+    gradleVersion = '6.3'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-bin.zip"
 }
 
 repositories {
