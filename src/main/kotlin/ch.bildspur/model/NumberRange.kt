@@ -6,7 +6,17 @@ data class NumberRange(
         @Expose val low: Double,
         @Expose val high: Double) {
 
-    fun map(t: Float): Float {
-        return ((this.high - this.low).toFloat() * t) + this.low.toFloat()
+    /**
+     * Map the number range to a specific percentage ratio.
+     */
+    fun map(ratio: Double): Double {
+        return ((this.high - this.low) * ratio) + this.low
+    }
+
+    /**
+     * Get the percentage ration of the input value in relation to the number range.
+     */
+    fun ratio(value : Double) : Double {
+        return (value - this.low) / (this.high - this.low)
     }
 }
