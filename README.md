@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.github.cansik:bildspur-base:0.2.0"
+    implementation "com.github.cansik:bildspur-base:0.3.0"
 }
 ```
 
