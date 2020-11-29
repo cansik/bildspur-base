@@ -1,8 +1,6 @@
 package ch.bildspur.test
 
-import ch.bildspur.util.Easing
-import ch.bildspur.util.Mapping
-import ch.bildspur.util.isInMargin
+import ch.bildspur.util.*
 import org.junit.Test
 
 class EasingAndMappingTest {
@@ -27,5 +25,23 @@ class EasingAndMappingTest {
             println("In: $value Mapped: $mapped Inverted: $inverted")
             assert(value.isInMargin(inverted, 1.0E-8))
         }
+    }
+
+    @Test
+    fun precisionTest1() {
+        val x = 1234.12345678901
+        assert(x.precision == 11)
+    }
+
+    @Test
+    fun precisionTest2() {
+        val x = 0.0000000000025
+        assert(x.precision == 13)
+    }
+
+    @Test
+    fun roundTest() {
+        val x = 1234.12345678901
+        assert(x.round(5) == 1234.12346)
     }
 }

@@ -1,6 +1,8 @@
 package ch.bildspur.util
 
+import kotlin.math.pow
 import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 /**
  * Created by cansik on 04.02.17.
@@ -58,4 +60,23 @@ fun Boolean.toInvertSign(): Int {
 
 fun Boolean.toInt(): Int {
     return if (this) 1 else 0
+}
+
+val Double.precision : Int
+    get() {
+        val text = String.format("%.20f", this).split(",")[1]
+
+        // find last zero
+        var lastIndex = 0
+        for(i in text.indices) {
+            if(text[text.length - 1 - i] != '0') break
+            lastIndex = text.length - 1 - i
+        }
+
+        return text.substring(0, lastIndex).length
+    }
+
+fun Double.round(precision : Int = 0) : Double {
+    val factor = 10.0.pow(precision.toDouble())
+    return (this * factor).roundToLong() / factor
 }
