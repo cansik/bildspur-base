@@ -1,10 +1,11 @@
 package ch.bildspur.model
 
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 data class NumberRange(
-        @Expose val low: Double,
-        @Expose val high: Double) {
+        @Expose @SerializedName("low", alternate = ["lowValue"]) val low: Double,
+        @Expose @SerializedName("high", alternate = ["highValue"]) val high: Double) {
 
     /**
      * Map the number range to a specific percentage ratio.
