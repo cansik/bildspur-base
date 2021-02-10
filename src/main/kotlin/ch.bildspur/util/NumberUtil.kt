@@ -64,7 +64,8 @@ fun Boolean.toInt(): Int {
 
 val Double.precision : Int
     get() {
-        val text = String.format("%.20f", this).split(",")[1]
+        val components = String.format("%.20f", this).split(",", ".")
+        val text = components[1]
 
         // find last zero
         var lastIndex = 0
