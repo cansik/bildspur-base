@@ -1,5 +1,6 @@
 package ch.bildspur.configuration
 
+import ch.bildspur.configuration.converter.PathConverter
 import ch.bildspur.model.DataModel
 import ch.bildspur.model.ListDataModel
 import ch.bildspur.util.getValue
@@ -19,18 +20,27 @@ import kotlin.reflect.typeOf
 /**
  * Created by cansik on 11.07.17.
  */
-class ConfigurationController(appName: String, publisherName: String, appUri: String, gsonBuilder: GsonBuilder = GsonBuilder()) {
+class ConfigurationController(
+    appName: String,
+    publisherName: String,
+    appUri: String,
+    gsonBuilder: GsonBuilder = GsonBuilder()
+) {
     val configurationFileName = "$appName.json"
     val configurationPath: Path = Paths.get(System.getProperty("user.home"), ".$publisherName", appUri)
     val configurationFile: Path = Paths.get(configurationPath.toString(), configurationFileName)
 
     val gson: Gson = gsonBuilder
-            .setPrettyPrinting()
-            .excludeFieldsWithoutExposeAnnotation()
-            .registerTypeAdapter(DataModel::class.java, DataModelInstanceCreator())
-            .registerTypeAdapter(ListDataModel::class.java, ListDataModelInstanceCreator())
-            .registerTypeAdapterFactory(PostProcessingEnabler())
-            .create()
+        .setPrettyPrinting()
+        .excludeFieldsWithoutExposeAnnotation()
+
+        .registerTypeHierarchyAdapter(Path::class.java, PathConverter())
+
+        .registerTypeAdapter(DataModel::class.java, DataModelInstanceCreator())
+        .registerTypeAdapter(ListDataModel::class.java, ListDataModelInstanceCreator())
+
+        .registerTypeAdapterFactory(PostProcessingEnabler())
+        .create()
 
     init {
         if (!Files.exists(configurationPath)) {
@@ -78,7 +88,7 @@ class ConfigurationController(appName: String, publisherName: String, appUri: St
             val defaultValue = typeParameters[0]
 
             // check if generic and is data model
-            if(defaultValue is ParameterizedType && defaultValue.rawType == DataModel::class.java) {
+            if (defaultValue is ParameterizedType && defaultValue.rawType == DataModel::class.java) {
                 val dataModelDefaultValue = defaultValue.actualTypeArguments[0]
                 val dm = DataModel(dataModelDefaultValue as Class<*>)
                 val list = ListDataModel(mutableListOf(dm))

@@ -7,6 +7,7 @@ import ch.bildspur.model.ListDataModel
 import com.google.gson.annotations.Expose
 import org.junit.Test
 import java.nio.file.Files
+import java.nio.file.Paths
 
 class ConfigurationTest {
     private val configController = ConfigurationController("Test", "bildspur", "test")
@@ -25,10 +26,16 @@ class ConfigurationTest {
         var color = DataModel(RGB(0.2f, 0.3f, .5f))
 
         @Expose
-        val list = ListDataModel(mutableListOf(2, 3))
+        var list = ListDataModel(mutableListOf(2, 3))
 
         @Expose
-        val richList = ListDataModel(mutableListOf(
+        var readmePath = DataModel(Paths.get("README.md"))
+
+        @Expose
+        var testPath = Paths.get("HelloWorld.txt")
+
+        @Expose
+        var richList = ListDataModel(mutableListOf(
                 DataModel("Max"),
                 DataModel("Muster")
         ))
