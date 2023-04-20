@@ -1,4 +1,7 @@
-# bildspur-base [![Build Status](https://travis-ci.org/cansik/bildspur-base.svg?branch=master)](https://travis-ci.org/cansik/bildspur-base)
+# bildspur-base
+[![Build](https://github.com/cansik/bildspur-base/actions/workflows/gradle.yml/badge.svg)](https://github.com/cansik/bildspur-base/actions/workflows/gradle.yml)
+[![Release](https://jitpack.io/v/cansik/bildspur-base.svg)](https://jitpack.io/#cansik/bildspur-base)
+
 A library with basic components for creative applications in kotlin. The idea is to combine all the necessary and usefull utils into one framework.
 
 ## Installation
@@ -9,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.github.cansik:bildspur-base:0.3.0"
+    implementation "com.github.cansik:bildspur-base:0.3.6"
 }
 ```
 
